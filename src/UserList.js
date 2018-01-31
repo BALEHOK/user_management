@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import userRepository from './userRepository';
 
+import { Link } from 'react-router-dom';
 import UserItem from './UserItem';
 
 class UserList extends Component {
@@ -34,9 +35,12 @@ class UserList extends Component {
 
     return (
       <div>
-        <div>
+        <p>
+          <Link to="/add">Add new user</Link>
+        </p>
+        <p>
           <input type="text" placeholder="filter by first name" onChange={this.onFilterChanged} />
-        </div>
+        </p>
         <ul>
           {users.map(u => <li key={u.id}><UserItem user={u} /></li>)}
         </ul>

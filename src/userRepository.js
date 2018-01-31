@@ -74,6 +74,10 @@ class UserRepository {
   getUsers() {
     return data;
   }
+
+  addUser(newUser) {
+    data.push(newUser);
+  }
 }
 
 export default new UserRepository();
