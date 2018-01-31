@@ -9,12 +9,12 @@ class AddUser extends Component {
     super(props);
 
     this.onFirstNameChanged = this.onFirstNameChanged.bind(this);
-    this.onLastNameChanged = this.onLastNameChanged.bind(this);
+    this.onEmailChanged = this.onEmailChanged.bind(this);
     this.addUser = this.addUser.bind(this);
 
     this.state = {
       firstName: '',
-      lastName: ''
+      email: ''
     };
   }
 
@@ -25,24 +25,24 @@ class AddUser extends Component {
     });
   }
 
-  onLastNameChanged(event) {
-    const lastName = event.target.value;
+  onEmailChanged(event) {
+    const email = event.target.value;
     this.setState({
-      lastName: lastName
+      email: email
     });
   }
 
   addUser(event) {
     event.preventDefault();
 
-    const { firstName, lastName } = this.state;
-    if (firstName === '' && lastName === '') {
+    const { firstName, email } = this.state;
+    if (firstName === '' && email === '') {
       console.log('user with empty name will not be added');
     } else {
       userRepository.addUser({
         id: (new Date()).getTime(),
         first_name: firstName,
-        last_name: lastName
+        email: email
       })
     }
 
@@ -58,7 +58,7 @@ class AddUser extends Component {
         <form action="#">
           <p>
             <input type="text" placeholder="enter user's first name" onChange={this.onFirstNameChanged}></input>
-            <input type="text" placeholder="enter user's last name" onChange={this.onLastNameChanged}></input>
+            <input type="text" placeholder="enter user's email" onChange={this.onEmailChanged}></input>
           </p>
           <p>
             <input type="submit" value="Add user" onClick={this.addUser}></input>
