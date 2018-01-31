@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-import data from './data.js';
+import UserList from './UserList';
+import AddUser from './AddUser';
 
 class App extends Component {
   render() {
-    console.log('data', data);
-
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <header className="App-header">
+            <h1 className="App-title">Welcome to React</h1>
+          </header>
+          <Route path="/" exact component={UserList} />
+          <Route path="/add" exact component={AddUser} />
+        </div>
+      </BrowserRouter>
     );
   }
 }
